@@ -8,31 +8,21 @@ let config = function ($stateProvider, $urlRouterProvider) {
       abstract: true,
       templateUrl: 'templates/layout.tpl.html'
     })
-    .state('root.home', {
-      url: '/',
-      controller: 'HomeController',
-      templateUrl: 'templates/home.tpl.html'
-    })
-    .state('root.about', {
-      url: '/about',
-      controller: 'PageController',
-      templateUrl: 'templates/about.tpl.html'
-    })
-    .state('root.contact', {
-      url: '/contact',
-      controller: 'PageController',
-      templateUrl: 'templates/contact.tpl.html'
-    })
     .state('root.list', {
-      url: '/list',
-      cotroller: 'ListController',
+      url: '/',
+      controller: 'ListController',
       templateUrl: 'templates/list.tpl.html'
     })
     .state('root.single', {
       url: '/single/id',
+      controller: 'SingleController',
       templateUrl: 'templates/single.tpl.html'
     })
-
+    .state('root.about', {
+      url: '/about',
+      controller: 'AboutController',
+      templateUrl: 'templates/about.tpl.html'
+    })
     .state('root.add', {
       url: '/add',
       controller: 'AddController',
