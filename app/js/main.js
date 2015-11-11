@@ -16,7 +16,7 @@ var config = function config($stateProvider, $urlRouterProvider) {
     controller: 'ListController',
     templateUrl: 'templates/list.tpl.html'
   }).state('root.single', {
-    url: '/single/id',
+    url: '/single/:id',
     controller: 'SingleController',
     templateUrl: 'templates/single.tpl.html'
   }).state('root.about', {

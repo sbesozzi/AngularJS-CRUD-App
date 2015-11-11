@@ -14,7 +14,7 @@ let config = function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/list.tpl.html'
     })
     .state('root.single', {
-      url: '/single/id',
+      url: '/single/:id',
       controller: 'SingleController',
       templateUrl: 'templates/single.tpl.html'
     })

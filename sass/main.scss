@@ -3,12 +3,22 @@
 
 @import "foundation";
 
+
+
 body {
-  background: #e2ebf3;
+  background: #F3F3F3;
 }
 
 .container {
   width: 400px;
   margin-top: 20px;
   margin-left: 20px;
+}
+
+ul {
+  list-style: none;
+
+  a {
+    color: #AFAFAF;
+  }
 }

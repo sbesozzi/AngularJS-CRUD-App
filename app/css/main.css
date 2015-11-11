@@ -6388,11 +6388,16 @@ th.hide-for-touch {
     display: table-cell !important; } }
 
 body {
-  background: #e2ebf3; }
+  background: #F3F3F3; }
 
 .container {
   width: 400px;
   margin-top: 20px;
   margin-left: 20px; }
+
+ul {
+  list-style: none; }
+  ul a {
+    color: #AFAFAF; }
 
 /*# sourceMappingURL=main.css.map */
