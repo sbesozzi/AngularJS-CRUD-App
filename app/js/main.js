@@ -9,11 +9,31 @@ var config = function config($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');
 
   $stateProvider.state('root', {
-    abstract: true
+    abstract: true,
+    templateUrl: 'templates/layout.tpl.html'
   }).state('root.home', {
     url: '/',
+    controller: 'HomeController',
+    templateUrl: 'templates/home.tpl.html'
+  }).state('root.about', {
+    url: '/about',
     controller: 'PageController',
-    templateUrl: 'templates/layout.tpl.html'
+    templateUrl: 'templates/about.tpl.html'
+  }).state('root.contact', {
+    url: '/contact',
+    controller: 'PageController',
+    templateUrl: 'templates/contact.tpl.html'
+  }).state('root.list', {
+    url: '/list',
+    cotroller: 'ListController',
+    templateUrl: 'templates/list.tpl.html'
+  }).state('root.single', {
+    url: '/single/id',
+    templateUrl: 'templates/single.tpl.html'
+  }).state('root.add', {
+    url: '/add',
+    controller: 'AddController',
+    templateUrl: 'templates/add.tpl.html'
   });
 };
 
@@ -28,14 +48,24 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var PageController = function PageController($scope) {};
+var HomeController = function HomeController($scope) {
 
-PageController.$inject = ['$scope'];
+  $scope.title = 'Home Page';
 
-exports['default'] = PageController;
+  $scope.aboutText = 'about text';
+
+  $scope.contactText = 'contact text';
+};
+
+HomeController.$inject = ['$scope'];
+
+exports['default'] = HomeController;
 module.exports = exports['default'];
 
 },{}],3:[function(require,module,exports){
+"use strict";
+
+},{}],4:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -50,13 +80,17 @@ var _config = require('./config');
 
 var _config2 = _interopRequireDefault(_config);
 
-var _controllersPageControllerJs = require('./controllers/page.controller.js');
+var _controllersHomeControllerJs = require('./controllers/home.controller.js');
 
-var _controllersPageControllerJs2 = _interopRequireDefault(_controllersPageControllerJs);
+var _controllersHomeControllerJs2 = _interopRequireDefault(_controllersHomeControllerJs);
 
-_angular2['default'].module('app', ['ui.router']).config(_config2['default']).controller('PageController');
+var _controllersListControllerJs = require('./controllers/list.controller.js');
 
-},{"./config":1,"./controllers/page.controller.js":2,"angular":6,"angular-ui-router":4}],4:[function(require,module,exports){
+var _controllersListControllerJs2 = _interopRequireDefault(_controllersListControllerJs);
+
+_angular2['default'].module('app', ['ui.router']).config(_config2['default']).controller('HomeController').controller('ListController');
+
+},{"./config":1,"./controllers/home.controller.js":2,"./controllers/list.controller.js":3,"angular":7,"angular-ui-router":5}],5:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -4427,7 +4461,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.7
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -33332,11 +33366,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":5}]},{},[3])
+},{"./angular":6}]},{},[4])
 
 
 //# sourceMappingURL=main.js.map

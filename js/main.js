@@ -1,13 +1,13 @@
 import angular from 'angular';
 import 'angular-ui-router';
-import configFunct from './config';
+import config from './config';
 
-import PageController from './controllers/page.controller.js';
-
-
-
+import HomeController from './controllers/home.controller.js';
+import ListController from './controllers/list.controller.js';
 
 angular
   .module('app', ['ui.router'])
-  .config(configFunct)
-  .controller('PageController');
+  .config(config)
+  .controller('HomeController')
+  .controller('ListController')
+;
