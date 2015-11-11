@@ -6,10 +6,16 @@ let config = function ($stateProvider, $urlRouterProvider) {
 
     .state('root', {
       abstract: true
+    })
+
+    .state('root.home', {
+      url: '/',
+      controller: 'PageController',
+      templateUrl: 'templates/layout.tpl.html'
     });
 
 };
 
-config.$inject = ['stateProvider', '$urlRouterProvider'];
+config.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 export default config;

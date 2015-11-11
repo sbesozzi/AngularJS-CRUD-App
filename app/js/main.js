@@ -10,10 +10,14 @@ var config = function config($stateProvider, $urlRouterProvider) {
 
   $stateProvider.state('root', {
     abstract: true
+  }).state('root.home', {
+    url: '/',
+    controller: 'PageController',
+    templateUrl: 'templates/layout.tpl.html'
   });
 };
 
-config.$inject = ['stateProvider', '$urlRouterProvider'];
+config.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 exports['default'] = config;
 module.exports = exports['default'];
@@ -24,7 +28,7 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var PageController = function PageController() {};
+var PageController = function PageController($scope) {};
 
 PageController.$inject = ['$scope'];
 
@@ -50,7 +54,7 @@ var _controllersPageControllerJs = require('./controllers/page.controller.js');
 
 var _controllersPageControllerJs2 = _interopRequireDefault(_controllersPageControllerJs);
 
-_angular2['default'].module('app', ['ui.router']);
+_angular2['default'].module('app', ['ui.router']).config(_config2['default']).controller('PageController');
 
 },{"./config":1,"./controllers/page.controller.js":2,"angular":6,"angular-ui-router":4}],4:[function(require,module,exports){
 /**

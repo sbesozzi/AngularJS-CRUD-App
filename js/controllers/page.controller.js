@@ -1,4 +1,4 @@
-let PageController = function () {
+let PageController = function ($scope) {
   
 
 
