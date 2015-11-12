@@ -6388,16 +6388,28 @@ th.hide-for-touch {
     display: table-cell !important; } }
 
 body {
-  background: #F3F3F3; }
+  background: #FAFAFA; }
 
 .container {
   width: 400px;
   margin-top: 20px;
   margin-left: 20px; }
 
+.top-bar {
+  background: #FFFFFF; }
+  .top-bar .title-area .name a {
+    color: #84878B; }
+
+.top-bar-section .right li a {
+  background: #FFFFFF;
+  color: #84878B; }
+
 ul {
   list-style: none; }
   ul a {
     color: #AFAFAF; }
+
+.container h3 {
+  color: #4B4F5A; }
 
 /*# sourceMappingURL=main.css.map */

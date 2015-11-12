@@ -1,23 +1,16 @@
-let AddController = function($scope, $http, PARSE) {
+let AddController = function($scope, FindService) {
 
-  let url = PARSE.URL + 'classes/finds';
+  // let url = PARSE.URL + 'classes/finds';
 
-  let Find = function (obj) {
-    this.find     = obj.find;
-    this.material = obj.material;
-  };
 
   $scope.addFind = (obj) => {
-    let f = new Find(obj);
-
-    $http.post(url, f, PARSE.CONFIG).then( (res) => {
+    FindService.addFind(obj).then( (res) => {
       $scope.find = {};
     });
-
   };
 
 };
 
-AddController.$inject = ['$scope', '$http', 'PARSE'];
+AddController.$inject = ['$scope', 'FindService'];
 
 export default AddController;

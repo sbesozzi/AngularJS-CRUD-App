@@ -6,7 +6,7 @@
 
 
 body {
-  background: #F3F3F3;
+  background: #FAFAFA;
 }
 
 .container {
@@ -15,10 +15,32 @@ body {
   margin-left: 20px;
 }
 
+
+.top-bar {
+  background: #FFFFFF;
+
+  .title-area .name a {
+    color: #84878B;
+
+  }
+}
+
+.top-bar-section .right {
+  li a {
+    background: #FFFFFF;
+    color: #84878B;
+  }
+}
+
+
 ul {
   list-style: none;
 
   a {
     color: #AFAFAF;
   }
+}
+
+.container h3 {
+  color: #4B4F5A;
 }

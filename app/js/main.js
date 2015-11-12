@@ -27,6 +27,10 @@ var config = function config($stateProvider, $urlRouterProvider) {
     url: '/add',
     controller: 'AddController',
     templateUrl: 'templates/add.tpl.html'
+  }).state('root.edit', {
+    url: '/edit/:id',
+    controller: 'EditController',
+    templateUrl: 'templates/edit.tpl.html'
   });
 };
 
@@ -54,25 +58,18 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var AddController = function AddController($scope, $http, PARSE) {
+var AddController = function AddController($scope, FindService) {
 
-  var url = PARSE.URL + 'classes/finds';
-
-  var Find = function Find(obj) {
-    this.find = obj.find;
-    this.material = obj.material;
-  };
+  // let url = PARSE.URL + 'classes/finds';
 
   $scope.addFind = function (obj) {
-    var f = new Find(obj);
-
-    $http.post(url, f, PARSE.CONFIG).then(function (res) {
+    FindService.addFind(obj).then(function (res) {
       $scope.find = {};
     });
   };
 };
 
-AddController.$inject = ['$scope', '$http', 'PARSE'];
+AddController.$inject = ['$scope', 'FindService'];
 
 exports['default'] = AddController;
 module.exports = exports['default'];
@@ -83,18 +80,23 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var ListController = function ListController($scope, $http, PARSE) {
+var EditController = function EditController($scope, $stateParams, FindService, $state) {
 
-  var url = PARSE.URL + 'classes/finds';
-
-  $http.get(url, PARSE.CONFIG).then(function (res) {
-    $scope.finds = res.data.results;
+  FindService.getFind($stateParams.id).then(function (res) {
+    $scope.singleFind = res.data;
   });
+
+  $scope.updateFind = function (obj) {
+    FindService.update(obj).then(function (res) {
+      console.log(res);
+      $state.go('root.list');
+    });
+  };
 };
 
-ListController.$inject = ['$scope', '$http', 'PARSE'];
+EditController.$inject = ['$scope', '$stateParams', 'FindService', '$state'];
 
-exports['default'] = ListController;
+exports['default'] = EditController;
 module.exports = exports['default'];
 
 },{}],5:[function(require,module,exports){
@@ -103,22 +105,44 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var SingleController = function SingleController($scope, $stateParams, $http, PARSE) {
+var ListController = function ListController($scope, FindService) {
 
-  var url = PARSE.URL + 'classes/finds/' + $stateParams.id;
-
-  $http.get(url, PARSE.CONFIG).then(function (res) {
-
-    $scope.singleFind = res.data;
+  FindService.getFinds().then(function (res) {
+    $scope.finds = res.data.results;
   });
 };
 
-SingleController.$inject = ['$scope', '$stateParams', '$http', 'PARSE'];
+ListController.$inject = ['$scope', 'FindService'];
+
+exports['default'] = ListController;
+module.exports = exports['default'];
+
+},{}],6:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var SingleController = function SingleController($scope, $stateParams, FindService, $state) {
+
+  FindService.getFind($stateParams.id).then(function (res) {
+    $scope.singleFind = res.data;
+  });
+
+  $scope.deleteMe = function (obj) {
+    FindService['delete'](obj).then(function (res) {
+      console.log(res);
+      $state.go('root.list');
+    });
+  };
+};
+
+SingleController.$inject = ['$scope', '$stateParams', 'FindService', '$state'];
 
 exports['default'] = SingleController;
 module.exports = exports['default'];
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -145,9 +169,17 @@ var _controllersAddControllerJs = require('./controllers/add.controller.js');
 
 var _controllersAddControllerJs2 = _interopRequireDefault(_controllersAddControllerJs);
 
+var _controllersEditControllerJs = require('./controllers/edit.controller.js');
+
+var _controllersEditControllerJs2 = _interopRequireDefault(_controllersEditControllerJs);
+
 var _controllersAboutControllerJs = require('./controllers/about.controller.js');
 
 var _controllersAboutControllerJs2 = _interopRequireDefault(_controllersAboutControllerJs);
+
+var _servicesFindServiceJs = require('./services/find.service.js');
+
+var _servicesFindServiceJs2 = _interopRequireDefault(_servicesFindServiceJs);
 
 _angular2['default'].module('app', ['ui.router']).constant('PARSE', {
   URL: 'https://api.parse.com/1/',
@@ -157,9 +189,61 @@ _angular2['default'].module('app', ['ui.router']).constant('PARSE', {
       'X-Parse-REST-API-Key': 'qCXIrZRyB3CDZ9Z4kuSZlBB2XImD1b5Zk1eEcCBc'
     }
   }
-}).config(_config2['default']).controller('ListController', _controllersListControllerJs2['default']).controller('SingleController', _controllersSingleControllerJs2['default']).controller('AddController', _controllersAddControllerJs2['default']).controller('AboutController', _controllersAboutControllerJs2['default']);
+}).config(_config2['default']).controller('ListController', _controllersListControllerJs2['default']).controller('SingleController', _controllersSingleControllerJs2['default']).controller('AddController', _controllersAddControllerJs2['default']).controller('EditController', _controllersEditControllerJs2['default']).controller('AboutController', _controllersAboutControllerJs2['default']).service('FindService', _servicesFindServiceJs2['default']);
 
-},{"./config":1,"./controllers/about.controller.js":2,"./controllers/add.controller.js":3,"./controllers/list.controller.js":4,"./controllers/single.controller.js":5,"angular":9,"angular-ui-router":7}],7:[function(require,module,exports){
+},{"./config":1,"./controllers/about.controller.js":2,"./controllers/add.controller.js":3,"./controllers/edit.controller.js":4,"./controllers/list.controller.js":5,"./controllers/single.controller.js":6,"./services/find.service.js":8,"angular":11,"angular-ui-router":9}],8:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var FindService = function FindService($http, PARSE) {
+
+  var url = PARSE.URL + 'classes/finds';
+
+  this.getFinds = function () {
+    return $http({
+      url: url,
+      headers: PARSE.CONFIG.headers,
+      method: 'GET',
+      cache: true
+    });
+  };
+
+  this.getFind = function (id) {
+    return $http({
+      method: 'GET',
+      url: url + '/' + id,
+      headers: PARSE.CONFIG.headers,
+      cache: true
+    });
+  };
+
+  var Find = function Find(obj) {
+    this.find = obj.find;
+    this.material = obj.material;
+  };
+
+  this.addFind = function (obj) {
+    var f = new Find(obj);
+    return $http.post(url, f, PARSE.CONFIG);
+  };
+
+  this.update = function (obj) {
+    return $http.put(url + '/' + obj.objectId, obj, PARSE.CONFIG);
+  };
+
+  this['delete'] = function (obj) {
+    return $http['delete'](url + '/' + obj.objectId, PARSE.CONFIG);
+  };
+};
+
+FindService.$inject = ['$http', 'PARSE'];
+
+exports['default'] = FindService;
+module.exports = exports['default'];
+
+},{}],9:[function(require,module,exports){
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -4530,7 +4614,7 @@ angular.module('ui.router.state')
   .filter('isState', $IsStateFilter)
   .filter('includedByState', $IncludedByStateFilter);
 })(window, window.angular);
-},{}],8:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 /**
  * @license AngularJS v1.4.7
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -33435,11 +33519,11 @@ $provide.value("$locale", {
 })(window, document);
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
-},{}],9:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":8}]},{},[6])
+},{"./angular":10}]},{},[7])
 
 
 //# sourceMappingURL=main.js.map

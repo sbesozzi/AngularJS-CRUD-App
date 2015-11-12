@@ -1,15 +1,19 @@
-let SingleController = function($scope, $stateParams, $http, PARSE) {
+let SingleController = function($scope, $stateParams, FindService, $state) {
 
-  let url = PARSE.URL + 'classes/finds/' + $stateParams.id;
-
-  $http.get(url, PARSE.CONFIG).then( (res) => {
-
+  FindService.getFind($stateParams.id).then( (res) => {
     $scope.singleFind = res.data;
   });
-  
-  
+
+
+  $scope.deleteMe = function (obj) {
+    FindService.delete(obj).then( (res) => {
+      console.log(res);
+      $state.go('root.list');
+    });
+  };
+
 };
 
-SingleController.$inject = ['$scope', '$stateParams', '$http', 'PARSE'];
+SingleController.$inject = ['$scope', '$stateParams', 'FindService', '$state'];
 
 export default SingleController;

@@ -5,7 +5,10 @@ import config from './config';
 import ListController from './controllers/list.controller.js';
 import SingleController from './controllers/single.controller.js';
 import AddController from './controllers/add.controller.js';
+import EditController from './controllers/edit.controller.js';
 import AboutController from './controllers/about.controller.js';
+
+import FindService from './services/find.service.js';
 
 
 angular
@@ -23,5 +26,7 @@ angular
   .controller('ListController', ListController)
   .controller('SingleController', SingleController)
   .controller('AddController', AddController)
+  .controller('EditController', EditController)
   .controller('AboutController', AboutController)
+  .service('FindService', FindService)
 ;

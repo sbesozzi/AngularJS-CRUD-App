@@ -28,6 +28,11 @@ let config = function ($stateProvider, $urlRouterProvider) {
       controller: 'AddController',
       templateUrl: 'templates/add.tpl.html'
     })
+    .state('root.edit', {
+      url: '/edit/:id',
+      controller: 'EditController',
+      templateUrl: 'templates/edit.tpl.html'
+    })
     ;
 
 };
