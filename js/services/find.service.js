@@ -7,7 +7,7 @@ let FindService = function($http, PARSE) {
       url: url,
       headers: PARSE.CONFIG.headers,
       method: 'GET',
-      cache: true
+      // cache: true
     });
 
   };
@@ -17,7 +17,7 @@ let FindService = function($http, PARSE) {
       method: 'GET',
       url: url + '/' + id,
       headers: PARSE.CONFIG.headers,
-      cache: true
+      // cache: true
     });
   };
 

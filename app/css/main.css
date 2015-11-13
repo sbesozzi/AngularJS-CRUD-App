@@ -6398,9 +6398,11 @@ body {
     font-size: 1.1rem; }
 
 nav {
-  border-bottom: 1px solid #cccccc; }
+  border-bottom: 1px solid #E1E3DF; }
   nav .top-bar-section .right {
     height: 25px; }
+    nav .top-bar-section .right li {
+      margin-left: 15px; }
   nav .top-bar-section li a:not(.button) {
     background: #FFFFFF !important;
     color: #84878B;
@@ -6414,62 +6416,106 @@ nav {
     background: #FFFFFF !important; }
 
 .container {
-  width: 400px;
-  margin-top: 20px;
-  margin-left: 20px; }
+  width: 100%;
+  margin-top: 30px; }
+
+footer {
+  width: 150px;
+  margin: auto;
+  color: #84878B;
+  font-size: 13px;
+  padding-top: 50px; }
 
 .list {
-  margin: 10px; }
-  .list h4 {
+  width: 400px;
+  height: 500px;
+  margin: auto;
+  padding: 20px;
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  border: 1px solid #E1E3DF; }
+  .list h5 {
+    padding-bottom: 10px;
     color: #4B4F5A; }
   .list ul {
     list-style: none;
     margin: 0; }
-  .list li a {
-    color: #AFAFAF; }
+  .list li {
+    padding-bottom: 10px; }
+    .list li a {
+      color: #AFAFAF; }
 
-.single h4 {
-  color: #4B4F5A; }
+.single {
+  width: 400px;
+  height: 500px;
+  margin: auto;
+  padding: 20px;
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  border: 1px solid #E1E3DF; }
+  .single h5 {
+    color: #4B4F5A;
+    padding-bottom: 10px; }
+  .single p {
+    color: #AFAFAF;
+    padding-bottom: 20px;
+    margin: 0; }
+  .single a {
+    color: #84878B;
+    padding-top: 20px;
+    padding-right: 20px; }
+  .single img {
+    width: 250px;
+    height: 250px;
+    background-size: cover;
+    margin: auto;
+    border-radius: 4px;
+    padding-bottom: 10px; }
 
-.single p {
-  color: #AFAFAF; }
+.about {
+  width: 400px;
+  height: 400px;
+  margin: auto;
+  padding: 20px;
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  border: 1px solid #E1E3DF; }
+  .about h5 {
+    color: #4B4F5A; }
+  .about p {
+    color: #AFAFAF;
+    line-height: 25px; }
 
-.single a {
-  color: #84878B;
-  padding-right: 10px; }
+.add {
+  width: 400px;
+  height: 500px;
+  margin: auto; }
+  .add h5 {
+    color: #4B4F5A; }
+  .add form input {
+    box-shadow: none;
+    border-radius: 3px;
+    background: #FFFFFF; }
+  .add form button {
+    padding: 10px 28px 11px 28px;
+    border-radius: 3px;
+    background-color: #D4D4D4;
+    font-size: 16px; }
 
-.about h4 {
-  color: #4B4F5A; }
-
-.about p {
-  color: #AFAFAF; }
-
-.add h4 {
-  color: #4B4F5A; }
-
-.add form input {
-  box-shadow: none;
-  border-radius: 3px;
-  background: #FFFFFF; }
-
-.add form button {
-  padding: 10px 28px 11px 28px;
-  border-radius: 3px;
-  background-color: #D4D4D4;
-  font-size: 16px; }
-
-.edit h4 {
-  color: #4B4F5A; }
-
-.edit form input {
-  box-shadow: none;
-  border-radius: 3px;
-  background: #FFFFFF; }
-
-.edit form button {
-  padding: 10px 12px 11px 12px;
-  border-radius: 3px;
-  background-color: #D4D4D4;
-  font-size: 16px; }
+.edit {
+  width: 400px;
+  height: 500px;
+  margin: auto; }
+  .edit h5 {
+    color: #4B4F5A; }
+  .edit form input {
+    box-shadow: none;
+    border-radius: 3px;
+    background: #FFFFFF; }
+  .edit form button {
+    padding: 10px 12px 11px 12px;
+    border-radius: 3px;
+    background-color: #D4D4D4;
+    font-size: 16px; }
 
 /*# sourceMappingURL=main.css.map */

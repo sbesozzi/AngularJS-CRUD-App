@@ -1,10 +1,13 @@
 <div class="single">
-  <h4>{{ singleFind.find }}</h4>
+  <h5>{{ singleFind.find }}</h5>
 
-  <p>made of: {{ singleFind.material }}</p>
+  <p>{{ singleFind.material }}</p>
+  <p>{{ singleFind.color }}</p>
+  <img src="{{ singleFind.photo }}">
 
   <hr>
+  
+  <a href="#/edit/{{ singleFind.objectId }}">Edit</a>
 
-  <a href="#/edit/{{ singleFind.objectId }}">Edit</a> 
   <a href="#/" ng-click="deleteMe(singleFind)">Delete</a>
 </div>
