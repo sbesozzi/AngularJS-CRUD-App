@@ -1,8 +1,10 @@
-<h3>{{ singleFind.find }}</h3>
+<div class="single">
+  <h4>{{ singleFind.find }}</h4>
 
-<p>This find is made of {{ singleFind.material }}</p>
+  <p>made of: {{ singleFind.material }}</p>
 
-<hr>
+  <hr>
 
-<a href="#/edit/{{ singleFind.objectId }}">Edit</a> 
-<a href="#/" ng-click="deleteMe(singleFind)">Delete</a>
+  <a href="#/edit/{{ singleFind.objectId }}">Edit</a> 
+  <a href="#/" ng-click="deleteMe(singleFind)">Delete</a>
+</div>

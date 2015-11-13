@@ -1,4 +1,4 @@
-let AddController = function($scope, FindService) {
+let AddController = function($scope, FindService, $state) {
 
   // let url = PARSE.URL + 'classes/finds';
 
@@ -6,11 +6,13 @@ let AddController = function($scope, FindService) {
   $scope.addFind = (obj) => {
     FindService.addFind(obj).then( (res) => {
       $scope.find = {};
+      $state.go('root.list');
+
     });
   };
 
 };
 
-AddController.$inject = ['$scope', 'FindService'];
+AddController.$inject = ['$scope', 'FindService', '$state'];
 
 export default AddController;

@@ -58,18 +58,19 @@ module.exports = exports['default'];
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-var AddController = function AddController($scope, FindService) {
+var AddController = function AddController($scope, FindService, $state) {
 
   // let url = PARSE.URL + 'classes/finds';
 
   $scope.addFind = function (obj) {
     FindService.addFind(obj).then(function (res) {
       $scope.find = {};
+      $state.go('root.list');
     });
   };
 };
 
-AddController.$inject = ['$scope', 'FindService'];
+AddController.$inject = ['$scope', 'FindService', '$state'];
 
 exports['default'] = AddController;
 module.exports = exports['default'];
