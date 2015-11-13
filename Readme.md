@@ -1,6 +1,9 @@
-## Welcome to My Project
+## Thrifted Finds App
 
-> I am your Readme.md file, you should probably update me.
+> Thrifted Finds is a handy app to store your thirft store scores.
+
+- Creating an CRUD app using AngularJS
+- Deployed version at http://sarah.besozzi.thriftedfinds.surge.sh/#/
 
 
 ## Usage
