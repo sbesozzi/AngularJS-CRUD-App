@@ -6428,7 +6428,7 @@ footer {
 
 .list {
   width: 400px;
-  height: 500px;
+  height: 540px;
   margin: auto;
   padding: 20px;
   background-color: #FFFFFF;
@@ -6447,7 +6447,7 @@ footer {
 
 .single {
   width: 400px;
-  height: 500px;
+  height: 540px;
   margin: auto;
   padding: 20px;
   background-color: #FFFFFF;
@@ -6465,12 +6465,13 @@ footer {
     padding-top: 20px;
     padding-right: 20px; }
   .single img {
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
     background-size: cover;
     margin: auto;
     border-radius: 4px;
-    padding-bottom: 10px; }
+    padding-bottom: 10px;
+    object-fit: cover; }
 
 .about {
   width: 400px;

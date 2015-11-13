@@ -206,20 +206,20 @@ var FindService = function FindService($http, PARSE) {
     return $http({
       url: url,
       headers: PARSE.CONFIG.headers,
-      method: 'GET'
+      method: 'GET',
+      cache: true
     });
   };
 
-  // cache: true
   this.getFind = function (id) {
     return $http({
       method: 'GET',
       url: url + '/' + id,
-      headers: PARSE.CONFIG.headers
+      headers: PARSE.CONFIG.headers,
+      cache: true
     });
   };
 
-  // cache: true
   var Find = function Find(obj) {
     this.find = obj.find;
     this.material = obj.material;
